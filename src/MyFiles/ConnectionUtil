@@ -1,0 +1,27 @@
+
+
+create table account(
+accountno bigint primary key,
+customerid int,
+actype varchar(7),
+balance float
+)
+
+create table customer(
+customerid int not null generated always as identity(start with 1,increment by 1) primary key,
+firstname varchar(20),
+lastname varchar(20),
+phonenumber varchar(10),
+email varchar(30),
+password varchar(15),
+dob Date
+)
+
+alter table account
+add constraint myfk foreign key(customerid) references customer(customerid)
+
+select * from account
+select * from customer
+
+
+drop table customer
